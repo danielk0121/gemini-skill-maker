@@ -39,3 +39,16 @@ gemini skills install session-handover.skill --scope workspace
 - **문서**: 한국어를 가급적 사용하며, 파일명 및 내용 모두 한국어 관례를 따릅니다.
 - **코드**: 소스 코드 및 관련 파일명은 영어 관례를 따르며, 주석은 한국어로 작성합니다.
 - **커밋 메시지**: 한국어로 작성합니다.
+
+## `session-handover.skill` 파일 패키징 안내
+`session-handover.skill` 파일은 컴파일 과정을 거쳐 만들어지는 실행 파일이 아니라, 스킬 폴더 내부에 있는 `SKILL.md`와 관련 파일들을 하나로 묶어 확장자만 바꾼 **ZIP 압축 파일**입니다. 압축 파일 구조를 가지기 때문에 IDE나 에디터에서는 텍스트로 열 수 없는 바이너리 형식으로 인식하는 것입니다.
+
+따라서 별도의 빌드 도구를 설치할 필요 없이 터미널에서 기본 `zip` 명령어를 사용해 간단하게 패키징할 수 있습니다. 
+
+현재 작업 중인 `gemini-skill-maker` 디렉토리 위치에서 아래 명령어를 실행하시면 됩니다.
+
+```bash
+zip -r session-handover.skill session-handover
+```
+
+명령어를 실행하면 `session-handover` 폴더 내부의 모든 내용이 하나의 `.skill` 파일로 묶이며, 이후 Gemini CLI 환경에서 해당 파일을 커스텀 스킬로 정상적으로 불러와 사용할 수 있습니다.
